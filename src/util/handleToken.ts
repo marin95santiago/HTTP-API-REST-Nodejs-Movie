@@ -1,12 +1,11 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
+import ev from '../environmentVariables';
 import jwt from 'jsonwebtoken';
-
-const SECRET = process.env.SECRET || 'SECRETFORJWTOKEN';
 
 export const isAuth = (req: Request, res: Response, next: Function) => {
     const token = req.headers.authorization;
     if(token){
-        jwt.verify(token, SECRET, (error: any, decoded: any) => {
+        jwt.verify(token, ev.jwtSecret, (error: any, decoded: any) => {
             if(error){
                 res.status(404).send({message: 'Token invalid'});
             } else {
