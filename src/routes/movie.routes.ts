@@ -4,7 +4,7 @@ import { isAuth } from '../util/handleToken';
 
 const router = Router();
 
-router.get('/movies/:sort?', isAuth, listMovie),
-router.post('/create/movie',isAuth, createMovie)
+router.get('/api/movies', isAuth, listMovie),
+router.post('/api/create/movie',isAuth, createMovie)
 
 export default router;

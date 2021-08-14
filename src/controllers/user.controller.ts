@@ -23,6 +23,17 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 }
 
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const response = await User.findById(id);
+        res.status(200).send(response);
+
+    } catch (error) {
+        return res.status(500).send(error);
+    }
+}
+
 export const signUp = async (
     req: Request,
     res: Response

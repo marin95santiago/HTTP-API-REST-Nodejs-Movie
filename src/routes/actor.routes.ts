@@ -4,7 +4,7 @@ import { isAuth } from '../util/handleToken';
 
 const router = Router();
 
-router.get('/actors', isAuth, listActor),
-router.post('/create/actor',isAuth, createActor)
+router.get('/api/actors', isAuth, listActor),
+router.post('/api/create/actor',isAuth, createActor)
 
 export default router

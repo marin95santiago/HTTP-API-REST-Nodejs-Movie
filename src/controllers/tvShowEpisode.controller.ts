@@ -71,8 +71,8 @@ export const listTvShowEpisode = async (
 
         // in this section is the code for filter the tvshow episode list
         // it will depend on the value of the season and episode on the header
-        let season = Number(req.params.season);
-        let episode = Number(req.params.episode);
+        let season = Number(req.query.season);
+        let episode = Number(req.query.episode);
 
         response = await TvShowEpisode.findOne({seasonNumber: season, episodeNumber: episode});
 

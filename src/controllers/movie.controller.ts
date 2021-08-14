@@ -47,29 +47,14 @@ export const listMovie = async (
     res: Response
 ): Promise<Response> => {
     try {
-
         let response;
-
         // in this section is the code for filter the response
         // it will depend on the value of the filter header
-        let filter = req.headers.filter;
+        const { name } = req.query
+        const movieName:string = name ? name as string : '';
 
-        if(filter){
-
-            let filterBy = '';
-            let filterValue = '';
-
-            for(let i = 0; i < filter.length; i ++){
-                if(filter[i] === ':'){
-                    filterBy = String(filter.slice(0, i));
-                    filterValue = String(filter.slice(i + 1, filter.length));
-                }
-            }
-
-            if(filterBy !== ''){
-                response = await Movie.find({[filterBy]: filterValue});
-            }
-
+        if(movieName !== ''){
+            response = await Movie.find({name: movieName});
         } else {
             response = await Movie.find();
         }

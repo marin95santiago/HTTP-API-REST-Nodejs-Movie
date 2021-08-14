@@ -4,7 +4,7 @@ import { isAuth } from '../util/handleToken';
 
 const router = Router();
 
-router.get('/directors', isAuth, listDirector),
-router.post('/create/director',isAuth, createDirector)
+router.get('/api/directors', isAuth, listDirector),
+router.post('/api/create/director',isAuth, createDirector)
 
 export default router
