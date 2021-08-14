@@ -34,24 +34,11 @@ export const listTvShowSeason = async (
 
         // in this section is the code for filter the response
         // it will depend on the value of the filter header
-        let filter = req.headers.filter;
+        const { season } = req.query;
+        const seasonNumber : string = season ? season as string : '';
 
-        if(filter){
-
-            let filterBy = '';
-            let filterValue = '';
-
-            for(let i = 0; i < filter.length; i ++){
-                if(filter[i] === ':'){
-                    filterBy = String(filter.slice(0, i));
-                    filterValue = String(filter.slice(i + 1, filter.length));
-                }
-            }
-
-            if(filterBy !== ''){
-                response = await TvShowSeason.find({[filterBy]: filterValue});
-            }
-
+        if(seasonNumber !== ''){
+            response = await TvShowSeason.find({seasonNumber: Number(seasonNumber)});
         } else {
             response = await TvShowSeason.find();
         }

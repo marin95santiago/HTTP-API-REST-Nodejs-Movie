@@ -27,6 +27,5 @@ export const listDirector = async (
 
     } catch (error) {
         return res.status(500).json(error);
-        
     }
 }

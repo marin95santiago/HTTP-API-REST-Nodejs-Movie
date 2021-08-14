@@ -7,15 +7,15 @@ import { isAuth } from '../util/handleToken';
 const router = Router();
 
 // routes for tv show
-router.get('/tv-show/:sort?', isAuth, listTvShow);
-router.post('/create/tv-show',isAuth, createTvShow);
+router.get('/api/tv-show', isAuth, listTvShow);
+router.post('/api/create/tv-show',isAuth, createTvShow);
 
 // routes for tv show season
-router.post('/create/tv-show-season',isAuth, createTvShowSeason);
-router.get('/tv-show-season/:sort?', isAuth, listTvShowSeason);
+router.post('/api/create/tv-show-season',isAuth, createTvShowSeason);
+router.get('/api/tv-show-season/', isAuth, listTvShowSeason);
 
 // routes for tv show episodes
-router.get('/tv-show/:season/:episode', isAuth, listTvShowEpisode);
-router.post('/create/tv-show-episode', isAuth, createTvShowEpisode);
+router.get('/api/tv-show/episode', isAuth, listTvShowEpisode);
+router.post('/api/create/tv-show-episode', isAuth, createTvShowEpisode);
 
 export default router;
